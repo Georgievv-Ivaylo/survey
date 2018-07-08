@@ -11,6 +11,22 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for survey
+CREATE DATABASE IF NOT EXISTS `survey` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `survey`;
+
+-- Dumping structure for table survey.answered_questionnaires
+CREATE TABLE IF NOT EXISTS `answered_questionnaires` (
+  `id` mediumint(10) NOT NULL AUTO_INCREMENT,
+  `questionnaire_id` mediumint(10) NOT NULL,
+  `questionnaire_json` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
+  `created` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- Dumping data for table survey.answered_questionnaires: ~29 rows (approximately)
 /*!40000 ALTER TABLE `answered_questionnaires` DISABLE KEYS */;
 INSERT IGNORE INTO `answered_questionnaires` (`id`, `questionnaire_id`, `questionnaire_json`, `status`, `created`) VALUES
@@ -45,6 +61,17 @@ INSERT IGNORE INTO `answered_questionnaires` (`id`, `questionnaire_id`, `questio
 	(29, 3, '[]', 'active', '2018-07-04 04:52:13.827583');
 /*!40000 ALTER TABLE `answered_questionnaires` ENABLE KEYS */;
 
+-- Dumping structure for table survey.answers
+CREATE TABLE IF NOT EXISTS `answers` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Checkbox',
+  `status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- Dumping data for table survey.answers: ~6 rows (approximately)
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
 INSERT IGNORE INTO `answers` (`id`, `name`, `title`, `type`, `status`) VALUES
@@ -56,6 +83,16 @@ INSERT IGNORE INTO `answers` (`id`, `name`, `title`, `type`, `status`) VALUES
 	(6, 'pellentesque', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque iaculis feugiat nibh. Ut pharetra sem vel dolor varius, non suscipit lectus varius. Praesent eleifend est eget est lacinia fermentum. Nulla aliquet tortor et sapien euismod elementum. Nam non ullamcorper sapien. Sed ligula eros, aliquam a nisi et, ornare vehicula mi.', 'Text', 'active');
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 
+-- Dumping structure for table survey.questionnaires
+CREATE TABLE IF NOT EXISTS `questionnaires` (
+  `id` mediumint(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `questions_json` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- Dumping data for table survey.questionnaires: ~4 rows (approximately)
 /*!40000 ALTER TABLE `questionnaires` DISABLE KEYS */;
 INSERT IGNORE INTO `questionnaires` (`id`, `title`, `questions_json`, `status`) VALUES
@@ -64,6 +101,18 @@ INSERT IGNORE INTO `questionnaires` (`id`, `title`, `questions_json`, `status`) 
 	(3, 'Type 3', '{\r\n  "questions": ["1", "2", "3", "4", "5"]\r\n}', 'active'),
 	(4, 'Type 4', '{\r\n  "questions": ["1", "4"]\r\n}', 'active');
 /*!40000 ALTER TABLE `questionnaires` ENABLE KEYS */;
+
+-- Dumping structure for table survey.questions
+CREATE TABLE IF NOT EXISTS `questions` (
+  `id` mediumint(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
+  `answers_json` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'checkbox',
+  `status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table survey.questions: ~5 rows (approximately)
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;

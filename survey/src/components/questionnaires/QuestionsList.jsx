@@ -116,7 +116,7 @@ class QuestionsList extends React.Component {
     }
 
     formData['questionnaire_id'] = this.props.questionnaire_id;
-    fetch('/data/post/questionnaires/questionnaire', {
+    fetch('/data/post/questionnaire/questionnaire', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

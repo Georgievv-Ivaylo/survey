@@ -11,7 +11,7 @@ class SelectQuestionnaire extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/data/get/questionnaires/questionnaires_form')
+    fetch('/data/get/questionnaire/questionnaires')
     .then(res => res.json())
     .then(
       (result) => {

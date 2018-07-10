@@ -39,7 +39,7 @@ class Questionnaire extends React.Component {
   }
 
   setQuestionnaire = (questionnaireId) => {
-    fetch('/data/get/questionnaires/questionnaire?qid='+ questionnaireId)
+    fetch('/data/get/questionnaire/full-questionnaire?id='+ questionnaireId)
     .then(data => data.json())
     .then(
       (data) => {

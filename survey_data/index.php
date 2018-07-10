@@ -1,17 +1,15 @@
 <?php
+
+use App\App;
+
 session_start();
 
-require_once './db.php';
+spl_autoload_register(function($class) {
+	$getFile = str_replace("\\", DIRECTORY_SEPARATOR, trim($class, "\\")) .'.php';
+	if (file_exists($getFile)) require_once $getFile;
+});
 
-$locationRaw = explode('?', $_SERVER['REQUEST_URI']);
-$location = explode('/', $locationRaw[0]);
-$documentMainDir = array_shift($location);
-$documentMainDir = array_shift($location);
-$documentDir = array_shift($location);
-$document = array_shift($location);
+$app = new App();
 
-if ($documentMainDir === 'get') {
-	include './apis/'. $documentDir .'/'. $document .'.php';
-} elseif ($documentMainDir === 'post' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-	include './handlers/'. $documentDir .'/'. $document .'.php';
-}
+$app->start();
+?>

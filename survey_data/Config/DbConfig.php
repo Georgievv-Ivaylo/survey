@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Config;
-
 
 class DbConfig
 {
@@ -11,3 +9,4 @@ class DbConfig
     const DB_USER = 'root';
     const DB_PASS = '362159847mkOlP;?';
 }
+?>

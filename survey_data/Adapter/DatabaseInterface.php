@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Adapter;
-
 
 interface DatabaseInterface
 {
@@ -18,3 +16,4 @@ interface DatabaseInterface
 
     public function cleanData(array $useData): array;
 }
+?>

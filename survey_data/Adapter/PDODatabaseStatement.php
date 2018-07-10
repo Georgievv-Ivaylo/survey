@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Adapter;
-
 
 class PDODatabaseStatement implements DatabaseStatementInterface
 {
@@ -38,3 +36,4 @@ class PDODatabaseStatement implements DatabaseStatementInterface
         return $this->statement->fetchObject($className);
     }
 }
+?>

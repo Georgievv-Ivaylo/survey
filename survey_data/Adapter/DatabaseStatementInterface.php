@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Adapter;
-
 
 interface DatabaseStatementInterface
 {
@@ -14,3 +12,4 @@ interface DatabaseStatementInterface
 
     public function fetchObject($className);
 }
+?>

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Adapter;
-
 
 use PDO;
 
@@ -58,3 +56,4 @@ class PDODatabase implements DatabaseInterface
         return $cleanData;
     }
 }
+?>
